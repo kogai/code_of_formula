@@ -1,6 +1,8 @@
 NAME := code_of_formula
 PKGS := core,menhirlib,ppx_deriving,ppx_deriving.show,easy-format,textutils,str,cmdliner
 SRC_FILES := $(shell find ./src -type f -name '*.ml')
+SRC_FILES += src/lexer.mll
+SRC_FILES += src/parser.mly
 SRC_DIRS := "src"
 
 OCB_FLAGS := -use-ocamlfind -use-menhir -Is $(SRC_DIRS) -pkgs $(PKGS)
