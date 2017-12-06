@@ -1,16 +1,7 @@
+convert string 
 
+`x, y = x + y`
 
-# Build
-```
-npm run build
-```
+to
 
-# Watch
-
-```
-npm run watch
-```
-
-
-# Editor
-If you use `vscode`, Press `Windows + Shift + B` it will build automatically
+`const add = (x, y) => x + y;`
