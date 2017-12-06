@@ -3,7 +3,11 @@ open Lexer
 open Parser
 open Lexing
 
-let fixture = "x, y = x + x * y + y"
+(* let fixture = "x, y = x + x * y - y / x" *)
+(* let fixture = "x, y = (x + y) * 10" *)
+let fixture = "x, y = x + y * 10"
+(* ./code_of_formula.byte generate string as below
+   const my_var = (x,y) => x + y * 10. *)
 
 let rec parse lexbuf =
   match Parser.program Lexer.read lexbuf with
@@ -12,7 +16,7 @@ let rec parse lexbuf =
 
 let () =
   let lexbuf = Lexing.from_string fixture in
-  let results = try
+  let formula::_ = try
       parse lexbuf
     with
     | Lexer.SyntaxError msg as e ->
@@ -23,4 +27,4 @@ let () =
       raise @@ e
   in
 
-  List.iter ~f:(fun s -> print_endline @@ Ir.show s) results
+  print_endline @@ (Ir.translate formula)

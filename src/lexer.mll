@@ -30,7 +30,9 @@ rule read =
   | white { read lexbuf }
   | newline { next_line lexbuf; read lexbuf }
   | '+' { PLUS (info lexbuf) }
+  | '-' { MINUS (info lexbuf) }
   | '*' { STAR (info lexbuf) }
+  | '/' { DIVIDE (info lexbuf) }
   | '=' { EQUAL (info lexbuf) }
   | ',' { COMMA (info lexbuf) }
   | ';' { SEMICOLON (info lexbuf) }
