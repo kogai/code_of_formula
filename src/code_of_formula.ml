@@ -27,4 +27,4 @@ let () =
       raise @@ e
   in
 
-  print_endline @@ (Ir.translate formula)
+  print_endline @@ (Ir.translate "add" formula)

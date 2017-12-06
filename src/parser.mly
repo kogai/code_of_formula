@@ -14,7 +14,6 @@
 %token <Ir.info> PARENTHR
 %token <Ir.info> EQUAL
 %token <Ir.info> COMMA
-%token <Ir.info> SEMICOLON
 
 %token <Ir.info> EOF
 

@@ -35,7 +35,6 @@ rule read =
   | '/' { DIVIDE (info lexbuf) }
   | '=' { EQUAL (info lexbuf) }
   | ',' { COMMA (info lexbuf) }
-  | ';' { SEMICOLON (info lexbuf) }
   | '(' { PARENTHL (info lexbuf) }
   | ')' { PARENTHR (info lexbuf) }
   | digit { NUMBER (
