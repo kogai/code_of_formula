@@ -1,3 +1,7 @@
+open Lexer
+open Lexing
 
+let fixture = "x y = x + y"
 
-let () = Js.log "Hello, BuckleScript"
+let () =
+  print_endline "Hello, BuckleScript"
