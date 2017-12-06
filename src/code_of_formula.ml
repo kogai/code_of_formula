@@ -26,5 +26,4 @@ let () =
       Printf.fprintf stderr "Parse error [%s] @%s\n" (Lexing.lexeme lexbuf) (Ir.show_info (Lexer.info lexbuf));
       raise @@ e
   in
-
   print_endline @@ (Ir.translate "add" formula)

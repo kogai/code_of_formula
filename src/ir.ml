@@ -9,6 +9,7 @@ type t =
   | Expression of info * string list * t
 [@@deriving show]
 
+let show_info (file, line, column) = Core.sprintf "%s:%d:%d" file line column
 let create_info file line column = (file, line, column)
 
 let rec translate name = Core.Printf.(function
