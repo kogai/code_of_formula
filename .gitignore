@@ -24,3 +24,4 @@ lib/bs
 .vscode
 .merlin
 src/*.js
+_build/

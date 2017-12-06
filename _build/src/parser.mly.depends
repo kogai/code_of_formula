@@ -1,2 +1,0 @@
-src/parser.ml: Core Ir Lexing Tuple2
-src/parser.mli: Ir Lexing
