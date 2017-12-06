@@ -25,21 +25,9 @@ bin/$(NAME).$(OS): $(NAME).native
 	mkdir -p bin
 	cp _build/src/$(NAME).native bin/$(NAME).$(OS)
 
-# .PHONY: docker
-# docker:
-# 	docker build -t $(NAME) . && \
-# 	docker run -t $(NAME)
-
-# .PHONY: native
-# native: $(NAME).native
-# 	@./$(NAME).native $(ARGS)
-
-# .PHONY: byte
-# byte: $(NAME).byte
-# 	@./$(NAME).byte $(ARGS)
-
-# .PHONY: run
-# run: native byte
+.PHONY: run
+run: $(NAME).byte
+	./$(NAME).byte
 
 # $(TEST_NAME).native: $(SRC_FILES)
 # 	$(OCB) $(TEST_NAME).native

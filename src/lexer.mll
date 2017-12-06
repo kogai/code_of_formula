@@ -31,12 +31,15 @@ rule read =
   | newline { next_line lexbuf; read lexbuf }
   | '+' { PLUS (info lexbuf) }
   | '*' { STAR (info lexbuf) }
+  | '=' { EQUAL (info lexbuf) }
+  | ',' { COMMA (info lexbuf) }
+  | ';' { SEMICOLON (info lexbuf) }
+  | '(' { PARENTHL (info lexbuf) }
+  | ')' { PARENTHR (info lexbuf) }
   | digit { NUMBER (
     (info lexbuf),
     (float_of_string (identifier lexbuf))
   )}
   | id { IDENTIFIER ((info lexbuf), (identifier lexbuf)) }
-  | '(' { PARENTHL (info lexbuf) }
-  | ')' { PARENTHR (info lexbuf) }
   | _ { raise (SyntaxError (sprintf "Unexpected character: [%s]" (Lexing.lexeme lexbuf))) }
   | eof { EOF (info lexbuf) }

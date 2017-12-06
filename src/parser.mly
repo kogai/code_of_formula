@@ -11,6 +11,8 @@
 %token <Ir.info> PARENTHL
 %token <Ir.info> PARENTHR
 %token <Ir.info> EQUAL
+%token <Ir.info> COMMA
+%token <Ir.info> SEMICOLON
 
 %token <Ir.info> EOF
 
@@ -24,9 +26,14 @@ program:
   | EOF { None }
   | v = formula { Some v }
 formula:
-  | left = formula op = PLUS right = formula { Ir.Operator (op, "+", left, right) }
-  | left = formula op = STAR right = formula { Ir.Operator (op, "*", left, right) }
+  | vs = separated_list(COMMA, variable) e = EQUAL ex = expression EOF { Ir.Expression (e, vs, ex) }
+expression:
+  | left = expression op = PLUS right = expression { Ir.Operator (op, "+", left, right) }
+  | left = expression op = STAR right = expression { Ir.Operator (op, "*", left, right) }
+  | t = atom { t }
+atom:
   | n = NUMBER { Ir.Number (Tuple2.get1 n, Tuple2.get2 n) }
-  | id = IDENTIFIER { Ir.Identifier (Tuple2.get1 n, Tuple2.get2 n) }
-/* operate: */
+  | n = IDENTIFIER { Ir.Identifier (Tuple2.get1 n, Tuple2.get2 n) }
+variable:
+  | id = IDENTIFIER { Tuple2.get2 id }
   

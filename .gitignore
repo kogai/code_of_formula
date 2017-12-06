@@ -25,3 +25,4 @@ lib/bs
 .merlin
 src/*.js
 _build/
+bin/
